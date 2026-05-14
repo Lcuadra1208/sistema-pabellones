@@ -1,0 +1,187 @@
+/* ============================================================
+   Sistema Pabellones — estilos globales
+   Complementa Bootstrap 5
+   ============================================================ */
+
+:root {
+    --pab-primary:   #1a6fa3;
+    --pab-secondary: #4db8a4;
+    --pab-dark:      #0d3349;
+    --pab-light-bg:  #f0f4f8;
+    --pab-sidebar-w: 240px;
+    --pab-header-h:  60px;
+}
+
+/* ── Layout principal ── */
+body {
+    background: var(--pab-light-bg);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.92rem;
+}
+
+/* ── Sidebar ── */
+#sidebar {
+    width: var(--pab-sidebar-w);
+    min-height: 100vh;
+    background: var(--pab-dark);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: width .25s ease;
+}
+
+#sidebar .brand {
+    min-height: var(--pab-header-h);
+    display: flex;
+    align-items: center;
+    padding: 0 1.1rem;
+    background: var(--pab-primary);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    gap: .55rem;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    transition: background .2s;
+}
+
+/* Cuando hay logo, fondo blanco con borde inferior */
+#sidebar .brand:has(img) {
+    background: #fff;
+    border-bottom: 2px solid var(--pab-primary);
+    justify-content: center;
+    padding: 8px 12px;
+}
+
+#sidebar .brand i { font-size: 1.3rem; }
+
+#sidebar .nav-link {
+    color: rgba(255,255,255,.75);
+    padding: .55rem 1.1rem;
+    border-radius: .4rem;
+    margin: .15rem .6rem;
+    transition: background .18s, color .18s;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+}
+
+#sidebar .nav-link:hover,
+#sidebar .nav-link.active {
+    color: #fff;
+    background: rgba(255,255,255,.12);
+}
+
+#sidebar .nav-section {
+    font-size: .68rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: rgba(255,255,255,.35);
+    padding: 1rem 1.1rem .3rem;
+}
+
+/* ── Área de contenido ── */
+#main-content {
+    margin-left: var(--pab-sidebar-w);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Topbar ── */
+#topbar {
+    height: var(--pab-header-h);
+    background: #fff;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    gap: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+
+#topbar .page-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--pab-dark);
+    flex: 1;
+}
+
+/* ── Cards ── */
+.pab-card {
+    background: #fff;
+    border-radius: .6rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+    border: 1px solid rgba(0,0,0,.06);
+}
+
+.pab-card .card-header {
+    background: transparent;
+    border-bottom: 1px solid #f0f0f0;
+    padding: .9rem 1.2rem;
+    font-weight: 600;
+    color: var(--pab-dark);
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+/* ── Badges de estado ── */
+.badge-pendiente  { background: #fff3cd; color: #856404; }
+.badge-aprobada   { background: #d1e7dd; color: #0f5132; }
+.badge-rechazada  { background: #f8d7da; color: #842029; }
+.badge-cancelada  { background: #e2e3e5; color: #41464b; }
+.badge-completada { background: #cff4fc; color: #055160; }
+
+/* ── Tablas ── */
+.table-pab thead th {
+    background: var(--pab-light-bg);
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: #6c757d;
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* ── Login ── */
+.login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--pab-dark) 0%, var(--pab-primary) 100%);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    background: #fff;
+    border-radius: .8rem;
+    padding: 2.4rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,.25);
+}
+
+.login-logo {
+    text-align: center;
+    margin-bottom: 1.8rem;
+}
+
+.login-logo i {
+    font-size: 2.8rem;
+    color: var(--pab-primary);
+}
+
+/* ── Calendario (FullCalendar) ── */
+.fc .fc-toolbar-title { font-size: 1rem !important; }
+.fc .fc-button { font-size: .82rem !important; }
+.fc .fc-event { cursor: pointer; border-radius: .3rem !important; font-size: .78rem; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    #sidebar { width: 0; overflow: hidden; }
+    #sidebar.open { width: var(--pab-sidebar-w); }
+    #main-content { margin-left: 0; }
+}
